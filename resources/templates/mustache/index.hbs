@@ -1,9 +1,10 @@
-<html>
-<body>
-<p>Hello, {{user.name}}
-</BR>
-{{user.login}}
+{{>header.hbs}}
+<p>
+    List
 </p>
-
-</body>
-</html>
+{{#personList}}
+    {id}{fname}{lname}<a href="/edit?{id}">edit</a> <a href="/delete?{id}">delete</a>
+{{/personList}}
+</p>
+<a href="/new">new</a>
+{{>footer.hbs}}

@@ -1,0 +1,14 @@
+{{>header.hbs}}
+
+<body>
+<form action="/save" method="post" enctype="multipart/form-data">
+    Get data: <br>
+    <p>
+        <label>first name:</label>
+        <input type="text" id="fname" name="fname"><br>
+        <label>last name:</label>
+        <input type="text" id="lname" name="lname">
+    </p>
+        <input type="submit" value="save" name="form">
+</form>
+{{>footer.hbs}}

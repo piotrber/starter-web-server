@@ -1,3 +1,3 @@
 package pl.pjpsoft.model
 
-data class MustacheUser(val id: Int, val name: String, val login:String)
+data class Person(val id: Int, val fname: String, val lname:String)
