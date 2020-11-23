@@ -7,24 +7,16 @@ import io.ktor.routing.*
 import pl.pjpsoft.data.getPersonList
 
 
-fun Routing.firstRouting() {
-    get("/new") {
-
-        call.respond(
-            MustacheContent("form.html", null)
-        )
-
-    }
-}
-
 fun Routing.mainRouting() {
     get("/") {
+
 
         val personList = getPersonList()
 
         call.respond(
-            MustacheContent("index.hbs", personList)
+            MustacheContent(
+                "index.hbs",
+                mapOf("personList" to personList))
         )
-
     }
 }

@@ -2,9 +2,21 @@
 <p>
     List
 </p>
-{{#personList}}
-    {id}{fname}{lname}<a href="/edit?{id}">edit</a> <a href="/delete?{id}">delete</a>
-{{/personList}}
+<p>
+<table>
+
+    {{#personList.person}}
+        <tr>
+            <td>{{id}} </td>
+            <td> {{fname}}</td>
+            <td> {{lname}}</td>
+            <td><a href="/edit?id={{id}}">edit</a></td>
+            <td><a href="/delete?id={{id}}">delete</a></td>
+        </tr>
+    {{/personList.person}}
+
+</table>
+
 </p>
 <a href="/new">new</a>
 {{>footer.hbs}}

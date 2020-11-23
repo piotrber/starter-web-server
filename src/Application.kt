@@ -5,9 +5,9 @@ import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.mustache.*
 import io.ktor.routing.*
-import pl.pjpsoft.controller.firstRouting
 import pl.pjpsoft.controller.mainRouting
-import pl.pjpsoft.controller.secondRouting
+import pl.pjpsoft.controller.newPerson
+import pl.pjpsoft.controller.savePerson
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -23,9 +23,9 @@ fun Application.module(testing: Boolean = false) {
     install(DefaultHeaders)
 
     routing {
-        firstRouting()
         mainRouting()
-        secondRouting()
+        newPerson()
+        savePerson()
     }
 }
 

@@ -9,6 +9,7 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import pl.pjpsoft.model.Person
+import pl.pjpsoft.model.PersonList
 
 object DbConnection {
 
@@ -39,7 +40,7 @@ fun insertNewPerson(person: Person) {
 
 }
 
-fun getPersonList(): List<Person> {
+fun getPersonList(): PersonList {
 
     val db = DbConnection.db
     val personList = mutableListOf<Person>()
@@ -53,7 +54,8 @@ fun getPersonList(): List<Person> {
             personList.add(person)
         }
     }
-    return personList
+
+    return PersonList(personList)
 }
 
 

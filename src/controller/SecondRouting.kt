@@ -8,7 +8,20 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import pl.pjpsoft.engine.getPerson
 
-fun Routing.secondRouting() {
+
+fun Routing.newPerson() {
+    get("/new") {
+
+        call.respond(
+            MustacheContent("form.html", null)
+        )
+
+    }
+}
+
+
+
+fun Routing.savePerson() {
 
     post("/save") {
 
