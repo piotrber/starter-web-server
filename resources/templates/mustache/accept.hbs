@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>OK</title>
-    <p>
-        first name {{fname}}<br>
-        name {{lname}}<br>
+{{>header.hbs}}
+<p>
+    first name {{fname}}<br>
+    name {{lname}}<br>
 
-        Person data accepted
+    Person data accepted
 
-    </p>
-    <a href="/new">next one</a><br>
-    <a href="/">home</a>
-</head>
-<body>
-
-</body>
-</html>
+</p>
+<a href="/new">next one</a><br>
+<a href="/">home</a>
+{{>footer.hbs}}

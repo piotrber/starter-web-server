@@ -11,7 +11,6 @@ fun Routing.mainRouting() {
     get("/") {
 
         setupPersonList(call)
-
     }
 }
 

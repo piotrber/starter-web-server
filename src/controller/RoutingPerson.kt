@@ -11,6 +11,15 @@ import pl.pjpsoft.engine.newPersonData
 import pl.pjpsoft.engine.personData
 
 
+fun Routing.personRouting(){
+    newPerson()
+    editPerson()
+    savePerson()
+    updatePerson()
+    deletePerson()
+}
+
+
 fun Routing.newPerson() {
     get("/new") {
 
@@ -64,7 +73,6 @@ fun Routing.updatePerson() {
 
 }
 
-
 fun Routing.savePerson() {
 
     post("/save") {
@@ -77,7 +85,6 @@ fun Routing.savePerson() {
             part.dispose()
         }
         call.respond(MustacheContent("accept.hbs", newPersonData(data)))
-
     }
 
 }

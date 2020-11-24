@@ -5,7 +5,8 @@ import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.mustache.*
 import io.ktor.routing.*
-import pl.pjpsoft.controller.*
+import pl.pjpsoft.controller.mainRouting
+import pl.pjpsoft.controller.personRouting
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -21,12 +22,9 @@ fun Application.module(testing: Boolean = false) {
     install(DefaultHeaders)
 
     routing {
+
         mainRouting()
-        newPerson()
-        editPerson()
-        savePerson()
-        updatePerson()
-        deletePerson()
+        personRouting()
     }
 }
 
