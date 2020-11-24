@@ -5,9 +5,7 @@ import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.mustache.*
 import io.ktor.routing.*
-import pl.pjpsoft.controller.mainRouting
-import pl.pjpsoft.controller.newPerson
-import pl.pjpsoft.controller.savePerson
+import pl.pjpsoft.controller.*
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -25,7 +23,10 @@ fun Application.module(testing: Boolean = false) {
     routing {
         mainRouting()
         newPerson()
+        editPerson()
         savePerson()
+        updatePerson()
+        deletePerson()
     }
 }
 

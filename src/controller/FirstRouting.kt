@@ -10,13 +10,19 @@ import pl.pjpsoft.data.getPersonList
 fun Routing.mainRouting() {
     get("/") {
 
+        setupPersonList(call)
 
-        val personList = getPersonList()
-
-        call.respond(
-            MustacheContent(
-                "index.hbs",
-                mapOf("personList" to personList))
-        )
     }
+}
+
+suspend fun setupPersonList(call: ApplicationCall){
+
+    val personList = getPersonList()
+
+    call.respond(
+        MustacheContent(
+            "index.hbs",
+            mapOf("personList" to personList))
+    )
+
 }

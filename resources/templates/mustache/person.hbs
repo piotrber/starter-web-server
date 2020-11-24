@@ -1,0 +1,15 @@
+{{>header.hbs}}
+
+<form action="/update" method="post" enctype="multipart/form-data">
+    correct: <br>
+    <p>
+        <label for="fname">first name:</label>
+        <input type="text" id="fname" name="fname" value="{{person.fname}}"><br>
+        <label for="lname">last name:</label>
+        <input type="text" id="lname" name="lname" value="{{person.lname}}">
+        <input type="hidden" name="id" value="{{person.id}}">
+    </p>
+    <input type="submit" value="save" name="form">
+</form>
+
+{{>footer.hbs}}
