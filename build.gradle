@@ -43,8 +43,7 @@ dependencies {
     implementation "org.jetbrains.exposed:exposed-jdbc:$exposed_version"
 
     implementation "org.xerial:sqlite-jdbc:3.8.11.2"
-
-
+    
     testImplementation "io.ktor:ktor-server-tests:$ktor_version"
 
 }
