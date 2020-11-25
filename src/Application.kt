@@ -7,6 +7,7 @@ import io.ktor.mustache.*
 import io.ktor.routing.*
 import pl.pjpsoft.controller.mainRouting
 import pl.pjpsoft.controller.personRouting
+import pl.pjpsoft.controller.staticRouting
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -25,6 +26,7 @@ fun Application.module(testing: Boolean = false) {
 
         mainRouting()
         personRouting()
+        staticRouting()
     }
 }
 

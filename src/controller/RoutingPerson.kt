@@ -13,8 +13,8 @@ import pl.pjpsoft.engine.personData
 
 fun Routing.personRouting(){
     newPerson()
-    editPerson()
     savePerson()
+    editPerson()
     updatePerson()
     deletePerson()
 }
