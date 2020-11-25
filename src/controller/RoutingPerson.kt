@@ -9,9 +9,10 @@ import io.ktor.routing.*
 import pl.pjpsoft.data.getSinglePerson
 import pl.pjpsoft.engine.newPersonData
 import pl.pjpsoft.engine.personData
+import pl.pjpsoft.model.Person
 
 
-fun Routing.personRouting(){
+fun Routing.personRouting() {
     newPerson()
     savePerson()
     editPerson()
@@ -29,7 +30,6 @@ fun Routing.newPerson() {
 
     }
 }
-
 
 fun Routing.editPerson() {
     get("/edit") {
@@ -61,14 +61,7 @@ fun Routing.updatePerson() {
     post("/update") {
 
         val multipart = call.receiveMultipart()
-        val data = mutableMapOf<String, String>()
-
-        multipart.forEachPart { part ->
-            if (part is PartData.FormItem) data.put(part.name.toString(), part.value)
-            part.dispose()
-        }
-        call.respond(MustacheContent("accept.hbs", personData(data)))
-
+        insertOrUpdatePerson(multipart, call, ::personData)
     }
 
 }
@@ -78,13 +71,21 @@ fun Routing.savePerson() {
     post("/save") {
 
         val multipart = call.receiveMultipart()
-        val data = mutableMapOf<String, String>()
-
-        multipart.forEachPart { part ->
-            if (part is PartData.FormItem) data.put(part.name.toString(), part.value)
-            part.dispose()
-        }
-        call.respond(MustacheContent("accept.hbs", newPersonData(data)))
+        insertOrUpdatePerson(multipart, call, ::newPersonData)
     }
 
+}
+
+suspend fun insertOrUpdatePerson(
+    multipart: MultiPartData,
+    call: ApplicationCall,
+    execFun: (data: MutableMap<String, String>) -> Person
+) {
+
+    val data = mutableMapOf<String, String>()
+    multipart.forEachPart { part ->
+        if (part is PartData.FormItem) data.put(part.name.toString(), part.value)
+        part.dispose()
+    }
+    call.respond(MustacheContent("accept.hbs", execFun(data)))
 }
