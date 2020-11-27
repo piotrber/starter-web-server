@@ -38,7 +38,6 @@ fun getSinglePerson(personId: Int): Person {
 
 fun updatePerson(person: Person) {
 
-
     transaction {
 
         PersonData.update({ PersonData.id eq person.id }) {
@@ -76,21 +75,32 @@ fun deletePerson(personId: Int) {
 
 fun getPersonList(): PersonList {
 
+    val personList = personDataList()
+    return PersonList(personList)
+
+}
+
+fun personDataList():List<Person>{
+
     val personList = mutableListOf<Person>()
-
     transaction {
+        val personData = PersonData.selectAll().toList()
 
-        val personDataList = PersonData.selectAll().toList()
-
-        personDataList.forEach {
+        personData.forEach {
             val person = mapResultRowToPerson(it)
             personList.add(person)
         }
     }
-
-    return PersonList(personList)
+    return personList
 }
 
+
+fun execRawSql(sql:String){
+
+    transaction{
+        exec(sql)
+    }
+}
 
 fun mapResultRowToPerson(it: ResultRow): Person =
     Person(id = it[PersonData.id].value, fname = it[PersonData.fname], lname = it[PersonData.lname])
