@@ -24,7 +24,6 @@ fun Application.module(testing: Boolean = false) {
     }
     install(ContentNegotiation){
         jackson{
-
         }
     }
     install(DefaultHeaders)
