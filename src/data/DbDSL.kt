@@ -28,9 +28,7 @@ fun getSinglePerson(personId: Int): Person {
     lateinit var person: Person
 
     transaction {
-
-        val personData = PersonData.select { (PersonData.id eq personId) }
-        personData.forEach { person = mapResultRowToPerson(it) }
+        person = mapResultRowToPerson(PersonData.select { (PersonData.id eq personId) }.first())
     }
 
     return person

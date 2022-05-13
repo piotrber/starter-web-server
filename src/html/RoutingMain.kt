@@ -1,9 +1,9 @@
 package pl.pjpsoft.controller
 
-import io.ktor.application.*
-import io.ktor.mustache.*
-import io.ktor.response.*
-import io.ktor.routing.*
+import io.ktor.server.application.*
+import io.ktor.server.mustache.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 import pl.pjpsoft.data.getPersonList
 
 

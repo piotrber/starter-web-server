@@ -1,11 +1,11 @@
 package pl.pjpsoft
 
 import com.github.mustachejava.DefaultMustacheFactory
-import io.ktor.application.*
-import io.ktor.features.*
-import io.ktor.jackson.*
-import io.ktor.mustache.*
-import io.ktor.routing.*
+import io.ktor.serialization.kotlinx.json.*
+import io.ktor.server.application.*
+import io.ktor.server.mustache.*
+import io.ktor.server.plugins.*
+import io.ktor.server.routing.*
 import pl.pjpsoft.API.routingApi
 import pl.pjpsoft.controller.mainRouting
 import pl.pjpsoft.controller.personRouting
@@ -22,10 +22,11 @@ fun Application.module(testing: Boolean = false) {
     install(Mustache) {
         mustacheFactory = DefaultMustacheFactory("templates/mustache")
     }
+
     install(ContentNegotiation){
-        jackson{
-        }
+        json()
     }
+
     install(DefaultHeaders)
 
     routing {
